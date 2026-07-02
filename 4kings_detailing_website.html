@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4 Kings Detailing | Precision. Perfection. Royal Treatment. | Orillia, ON</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0b1220;
+    --navy-2:#101a2e;
+    --gold:#d4af37;
+    --gold-light:#f2dca0;
+    --chrome:#c9d2dd;
+    --text-light:#eef1f6;
+    --text-muted:#9aa6b8;
+    --radius:14px;
+    --max-width:1180px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--navy);
+    color:var(--text-light);
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'Playfair Display',serif;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:var(--max-width);margin:0 auto;padding:0 24px;}
+  section{padding:90px 0;}
+  .section-tag{
+    color:var(--gold);
+    letter-spacing:2px;
+    text-transform:uppercase;
+    font-size:13px;
+    font-weight:600;
+    margin-bottom:10px;
+    display:block;
+  }
+  .section-title{font-size:clamp(28px,4vw,42px);margin-bottom:16px;color:var(--text-light);}
+  .section-sub{color:var(--text-muted);max-width:620px;margin-bottom:48px;font-size:16px;}
+
+  /* ===== HEADER / NAV ===== */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:1000;
+    background:rgba(11,18,32,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(212,175,55,0.15);
+  }
+  nav{
+    display:flex;align-items:center;justify-content:space-between;
+    max-width:var(--max-width);margin:0 auto;padding:16px 24px;
+  }
+  .logo{font-family:'Playfair Display',serif;font-weight:700;font-size:20px;letter-spacing:1px;}
+  .logo span{color:var(--gold);}
+  .nav-links{display:flex;gap:32px;font-size:14px;font-weight:500;}
+  .nav-links a{color:var(--text-muted);transition:color .2s;}
+  .nav-links a:hover{color:var(--gold);}
+  .nav-cta{
+    background:var(--gold);color:var(--navy);padding:10px 22px;border-radius:8px;
+    font-weight:600;font-size:14px;transition:transform .2s, box-shadow .2s;
+  }
+  .nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(212,175,55,0.35);}
+  .menu-toggle{display:none;background:none;border:none;color:var(--text-light);font-size:24px;cursor:pointer;}
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;
+    min-height:92vh;
+    display:flex;align-items:center;
+    padding-top:120px;
+    overflow:hidden;
+    background:
+      radial-gradient(circle at 20% 20%, rgba(212,175,55,0.10), transparent 40%),
+      radial-gradient(circle at 80% 70%, rgba(201,210,221,0.08), transparent 45%),
+      linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 60%, #060a13 100%);
+  }
+  .hero::before{
+    content:'';
+    position:absolute;
+    top:-20%;right:-10%;
+    width:60%;height:140%;
+    background:linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.05) 45%, rgba(212,175,55,0.12) 50%, transparent 60%);
+    transform:rotate(8deg);
+    animation:shine 8s ease-in-out infinite;
+  }
+  @keyframes shine{
+    0%,100%{opacity:.5; transform:rotate(8deg) translateX(0);}
+    50%{opacity:1; transform:rotate(8deg) translateX(-40px);}
+  }
+  .hero-content{position:relative;z-index:2;max-width:680px;}
+  .hero-tag{
+    color:var(--gold);text-transform:uppercase;letter-spacing:3px;font-size:13px;font-weight:600;
+    margin-bottom:18px;display:block;
+  }
+  .hero h1{
+    font-size:clamp(36px,5.5vw,58px);
+    line-height:1.1;margin-bottom:22px;
+    color:var(--text-light);
+  }
+  .hero h1 em{color:var(--gold);font-style:normal;}
+  .hero p{font-size:18px;color:var(--chrome);max-width:540px;margin-bottom:36px;}
+  .hero-ctas{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn-primary{
+    background:linear-gradient(135deg,var(--gold-light),var(--gold));
+    color:var(--navy);padding:16px 32px;border-radius:10px;font-weight:700;font-size:16px;
+    border:none;cursor:pointer;transition:transform .2s, box-shadow .2s;
+    display:inline-block;
+  }
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(212,175,55,0.4);}
+  .btn-secondary{
+    background:transparent;border:1px solid rgba(238,241,246,0.3);color:var(--text-light);
+    padding:16px 28px;border-radius:10px;font-weight:600;font-size:16px;cursor:pointer;
+    transition:border-color .2s, background .2s;
+  }
+  .btn-secondary:hover{border-color:var(--gold);background:rgba(212,175,55,0.08);}
+
+  /* ===== TRUST BAR ===== */
+  .trust-bar{
+    background:var(--navy-2);
+    padding:36px 0;
+    border-top:1px solid rgba(212,175,55,0.12);
+    border-bottom:1px solid rgba(212,175,55,0.12);
+  }
+  .trust-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:var(--max-width);margin:0 auto;padding:0 24px;
+  }
+  .trust-card{display:flex;align-items:center;gap:14px;justify-content:center;text-align:left;}
+  .trust-icon{
+    width:42px;height:42px;border-radius:50%;
+    background:rgba(212,175,55,0.12);
+    display:flex;align-items:center;justify-content:center;
+    font-size:20px;color:var(--gold);flex-shrink:0;
+  }
+  .trust-text strong{display:block;font-size:14px;color:var(--text-light);}
+  .trust-text span{font-size:13px;color:var(--text-muted);}
+
+  /* ===== SEASONAL BANNER ===== */
+  .season-banner{
+    background:linear-gradient(90deg, #1a2540, #0b1220 70%);
+    border-left:4px solid var(--gold);
+    margin:0 auto 0;
+    padding:22px 0;
+  }
+  .season-banner .container{
+    display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;
+  }
+  .season-banner p{font-size:15px;color:var(--chrome);margin:0;}
+  .season-banner strong{color:var(--gold-light);}
+  .season-banner a{
+    background:var(--gold);color:var(--navy);padding:10px 20px;border-radius:8px;font-weight:700;font-size:14px;white-space:nowrap;
+  }
+
+  /* ===== SERVICES ===== */
+  .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:56px;}
+  .price-card{
+    background:linear-gradient(160deg, #121d33, #0d1626);
+    border:1px solid rgba(212,175,55,0.15);
+    border-radius:var(--radius);
+    padding:32px 26px;
+    position:relative;
+    transition:transform .25s, box-shadow .25s, border-color .25s;
+  }
+  .price-card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,0.35);border-color:rgba(212,175,55,0.4);}
+  .price-card.popular{
+    border:1px solid var(--gold);
+    background:linear-gradient(160deg, #1a2540, #101a2e);
+    box-shadow:0 0 0 1px rgba(212,175,55,0.3), 0 20px 50px rgba(212,175,55,0.12);
+  }
+  .badge{
+    position:absolute;top:-14px;left:26px;
+    background:var(--gold);color:var(--navy);
+    font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+    padding:6px 14px;border-radius:20px;
+  }
+  .price-card h3{font-size:20px;margin-bottom:6px;color:var(--text-light);}
+  .price-card .price{font-size:32px;font-weight:700;color:var(--gold);margin:14px 0;font-family:'Playfair Display',serif;}
+  .price-card p.desc{color:var(--text-muted);font-size:14px;margin-bottom:0;}
+  .subgroup-label{
+    font-size:13px;text-transform:uppercase;letter-spacing:2px;color:var(--gold);
+    margin:48px 0 20px;font-weight:600;
+  }
+
+  /* ===== BEFORE/AFTER SLIDER ===== */
+  .ba-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:32px;}
+  .ba-card{background:#0d1626;border-radius:var(--radius);overflow:hidden;border:1px solid rgba(212,175,55,0.12);}
+  .ba-slider{
+    position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;cursor:ew-resize;user-select:none;
+  }
+  .ba-before, .ba-after{
+    position:absolute;top:0;left:0;width:100%;height:100%;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:14px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,0.6);
+  }
+  .ba-before{
+    background:linear-gradient(135deg,#3a3a3a,#5c5648 60%,#46453d);
+    filter:saturate(0.6) brightness(0.85);
+  }
+  .ba-after{
+    background:linear-gradient(135deg,#1d3a5c,#2e6da4 50%,#bcd8f5);
+    clip-path:inset(0 50% 0 0);
+  }
+  .ba-divider{
+    position:absolute;top:0;left:50%;width:4px;height:100%;background:var(--gold);
+    transform:translateX(-2px);box-shadow:0 0 12px rgba(212,175,55,0.6);
+  }
+  .ba-handle{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    width:42px;height:42px;border-radius:50%;background:var(--gold);
+    display:flex;align-items:center;justify-content:center;color:var(--navy);font-weight:700;
+    box-shadow:0 4px 14px rgba(0,0,0,0.4);
+  }
+  .ba-label-tag{
+    position:absolute;top:12px;font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+    background:rgba(0,0,0,0.5);padding:4px 10px;border-radius:6px;color:#fff;z-index:3;
+  }
+  .ba-label-before{left:12px;}
+  .ba-label-after{right:12px;}
+  .ba-caption{padding:18px 22px;}
+  .ba-caption h4{font-size:16px;margin-bottom:6px;color:var(--text-light);}
+  .ba-caption p{font-size:14px;color:var(--text-muted);margin:0;}
+
+  /* ===== FAQ ===== */
+  .faq-item{
+    border-bottom:1px solid rgba(212,175,55,0.15);
+  }
+  .faq-question{
+    width:100%;text-align:left;background:none;border:none;color:var(--text-light);
+    padding:22px 0;font-size:17px;font-weight:600;cursor:pointer;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .faq-question:hover{color:var(--gold);}
+  .faq-icon{font-size:20px;color:var(--gold);transition:transform .3s;}
+  .faq-answer{
+    max-height:0;overflow:hidden;transition:max-height .35s ease;
+  }
+  .faq-answer p{padding-bottom:22px;color:var(--text-muted);font-size:15px;max-width:680px;}
+  .faq-item.active .faq-icon{transform:rotate(45deg);}
+
+  /* ===== BOOKING ===== */
+  .booking-wrap{
+    display:grid;grid-template-columns:1.1fr 0.9fr;gap:48px;align-items:start;
+  }
+  .booking-form{
+    background:linear-gradient(160deg,#121d33,#0d1626);
+    border:1px solid rgba(212,175,55,0.2);
+    border-radius:var(--radius);
+    padding:36px;
+  }
+  .form-row{margin-bottom:18px;}
+  .form-row label{display:block;font-size:13px;color:var(--text-muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:1px;}
+  .form-row input, .form-row select{
+    width:100%;padding:13px 14px;border-radius:8px;border:1px solid rgba(238,241,246,0.15);
+    background:#0a1220;color:var(--text-light);font-size:15px;font-family:'Inter',sans-serif;
+  }
+  .form-row input:focus, .form-row select:focus{outline:none;border-color:var(--gold);}
+  .form-submit{
+    width:100%;padding:16px;border:none;border-radius:10px;
+    background:linear-gradient(135deg,var(--gold-light),var(--gold));
+    color:var(--navy);font-weight:700;font-size:16px;cursor:pointer;margin-top:8px;
+    transition:transform .2s;
+  }
+  .form-submit:hover{transform:translateY(-2px);}
+  .confirmation{
+    display:none;text-align:center;padding:40px 20px;
+  }
+  .confirmation.show{display:block;}
+  .confirmation .check{
+    width:60px;height:60px;border-radius:50%;background:rgba(212,175,55,0.15);
+    display:flex;align-items:center;justify-content:center;font-size:28px;color:var(--gold);
+    margin:0 auto 18px;
+  }
+  .confirmation h3{color:var(--text-light);margin-bottom:8px;}
+  .confirmation p{color:var(--text-muted);font-size:14px;}
+  .booking-side h3{color:var(--text-light);font-size:20px;margin-bottom:14px;}
+  .booking-side p{color:var(--text-muted);font-size:15px;margin-bottom:24px;}
+  .direct-contact{
+    background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.15);
+    border-radius:12px;padding:20px 22px;
+  }
+  .direct-contact p{font-size:13px;color:var(--text-muted);margin-bottom:10px;}
+  .direct-contact a{display:block;font-size:14px;color:var(--chrome);margin-bottom:6px;}
+  .direct-contact a:hover{color:var(--gold);}
+
+  /* ===== ABOUT ===== */
+  .about-wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;}
+  .about-visual{
+    aspect-ratio:4/3;border-radius:var(--radius);
+    background:linear-gradient(135deg,#1a2540,#0b1220 60%,rgba(212,175,55,0.15));
+    display:flex;align-items:center;justify-content:center;
+    color:var(--text-muted);font-size:13px;text-align:center;padding:20px;border:1px solid rgba(212,175,55,0.15);
+  }
+  .about-text p{color:var(--chrome);font-size:16px;margin-bottom:18px;}
+
+  /* ===== FOOTER ===== */
+  footer{background:#070b14;padding:60px 0 30px;border-top:1px solid rgba(212,175,55,0.12);}
+  .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:40px;}
+  .footer-col h4{color:var(--text-light);font-size:15px;margin-bottom:16px;}
+  .footer-col p, .footer-col a{display:block;color:var(--text-muted);font-size:14px;margin-bottom:8px;}
+  .footer-col a:hover{color:var(--gold);}
+  .footer-bottom{
+    border-top:1px solid rgba(238,241,246,0.08);padding-top:24px;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+    font-size:13px;color:var(--text-muted);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width:900px){
+    .nav-links{display:none;}
+    .menu-toggle{display:block;}
+    .trust-grid{grid-template-columns:1fr;}
+    .services-grid{grid-template-columns:1fr;}
+    .booking-wrap{grid-template-columns:1fr;}
+    .about-wrap{grid-template-columns:1fr;}
+    .footer-grid{grid-template-columns:1fr;}
+    section{padding:60px 0;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER / NAV ============ -->
+<header>
+  <nav>
+    <div class="logo">4 KINGS <span>DETAILING</span></div>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#before-after">Before/After</a>
+      <a href="#faq">FAQ</a>
+      <a href="#about">About</a>
+    </div>
+    <a href="#booking" class="nav-cta">Book Now</a>
+    <button class="menu-toggle" onclick="document.querySelector('.nav-links').classList.toggle('mobile-open')">☰</button>
+  </nav>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <div class="container hero-content">
+    <span class="hero-tag">Orillia & Surrounding Areas</span>
+    <h1>Drive Something <em>You're Proud Of</em> Again.</h1>
+    <p>There's a difference between a car that's clean and one that makes you sit up a little straighter behind the wheel. That's the feeling we deliver — every swirl gone, every surface restored, treated like it's our own vehicle. Precision. Perfection. Royal Treatment.</p>
+    <div class="hero-ctas">
+      <a href="#booking" class="btn-primary">Book Your Detail</a>
+      <a href="#services" class="btn-secondary">See Pricing</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRUST BAR ============ -->
+<div class="trust-bar">
+  <div class="trust-grid">
+    <div class="trust-card">
+      <div class="trust-icon">🚗</div>
+      <div class="trust-text"><strong>Mobile & In-Shop Service</strong><span>We come to you, or you come to us</span></div>
+    </div>
+    <div class="trust-card">
+      <div class="trust-icon">⏱</div>
+      <div class="trust-text"><strong>Same-Week Booking</strong><span>Fast confirmations, no phone tag</span></div>
+    </div>
+    <div class="trust-card">
+      <div class="trust-icon">📍</div>
+      <div class="trust-text"><strong>Serving Orillia & Surrounding Areas</strong><span>Owner-operated, locally based</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ SEASONAL URGENCY BANNER ============ -->
+<div class="season-banner">
+  <div class="container">
+    <p>☀️ <strong>Summer road-trip season is here</strong> — get your finish protected before long highway drives and bug season take their toll.</p>
+    <a href="#booking">Book Summer Detail</a>
+  </div>
+</div>
+
+<!-- ============ SERVICES SECTION ============ -->
+<section id="services">
+  <div class="container">
+    <span class="section-tag">Pricing</span>
+    <h2 class="section-title">Pick Your Level of Royal Treatment</h2>
+    <p class="section-sub">Every package gets the same obsessive attention to detail — the difference is how deep we go. Real flat-rate pricing, no surprise upsells at pickup.</p>
+
+    <div class="subgroup-label">Full Packages</div>
+    <div class="services-grid">
+      <div class="price-card popular">
+        <span class="badge">Most Popular</span>
+        <h3>Full Package — Sedan</h3>
+        <div class="price">$150</div>
+        <p class="desc">Complete interior + exterior detail. Our most-booked package for everyday drivers.</p>
+      </div>
+      <div class="price-card">
+        <h3>Full Package — SUV</h3>
+        <div class="price">$175</div>
+        <p class="desc">The same full treatment, sized for the extra interior and exterior surface area.</p>
+      </div>
+      <div class="price-card">
+        <h3>Full Package — Truck</h3>
+        <div class="price">$200</div>
+        <p class="desc">Top-to-bottom treatment for trucks — cab to bed, no corner skipped.</p>
+      </div>
+    </div>
+
+    <div class="subgroup-label">Core Services</div>
+    <div class="services-grid">
+      <div class="price-card">
+        <h3>Exterior Cleaning</h3>
+        <div class="price">$75</div>
+        <p class="desc">Hand wash, wheels, tires, and glass — the fast refresh between full details.</p>
+      </div>
+      <div class="price-card">
+        <h3>Interior Cleaning</h3>
+        <div class="price">$100</div>
+        <p class="desc">Vacuum, wipe-down, and interior glass — for when the inside needs the attention.</p>
+      </div>
+      <div class="price-card">
+        <h3>Carpet Stain Removal</h3>
+        <div class="price">$75–$100</div>
+        <p class="desc">For spills and stains a regular interior clean won't fully lift. Priced by condition.</p>
+      </div>
+    </div>
+
+    <div class="subgroup-label">Add-Ons</div>
+    <div class="services-grid">
+      <div class="price-card">
+        <h3>Wax & Shine — Sedan</h3>
+        <div class="price">+$50</div>
+        <p class="desc">The glossy, water-beading finish that makes a fresh detail last.</p>
+      </div>
+      <div class="price-card">
+        <h3>Wax & Shine — SUV/Truck</h3>
+        <div class="price">+$75</div>
+        <p class="desc">Larger surface, same protective shine and depth of finish.</p>
+      </div>
+      <div class="price-card">
+        <h3>Clay Bar — Sedan</h3>
+        <div class="price">+$75</div>
+        <p class="desc">Strips embedded contaminants a wash alone can't remove — this is what makes paint feel smooth again.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BEFORE / AFTER SECTION ============ -->
+<section id="before-after" style="background:var(--navy-2);">
+  <div class="container">
+    <span class="section-tag">Real Results</span>
+    <h2 class="section-title">See the Transformation, Not Just the Result</h2>
+    <p class="section-sub">Drag each slider to see the actual difference, side by side, same angle, same lighting. (Placeholder gradients shown below — swap in real photos any time.)</p>
+
+    <div class="ba-grid">
+      <div class="ba-card">
+        <div class="ba-slider" data-ba>
+          <div class="ba-before">Dusty / Dull Finish</div>
+          <span class="ba-label-tag ba-label-before">Before</span>
+          <div class="ba-after">Restored Gloss</div>
+          <span class="ba-label-tag ba-label-after">After</span>
+          <div class="ba-divider"></div>
+          <div class="ba-handle">↔</div>
+        </div>
+        <div class="ba-caption">
+          <h4>Exterior Gloss Restored</h4>
+          <p>This is what clay bar and wax actually do — not just clean, corrected.</p>
+        </div>
+      </div>
+
+      <div class="ba-card">
+        <div class="ba-slider" data-ba>
+          <div class="ba-before">Cluttered Dash & Seats</div>
+          <span class="ba-label-tag ba-label-before">Before</span>
+          <div class="ba-after">Vacuumed & Wiped Down</div>
+          <span class="ba-label-tag ba-label-after">After</span>
+          <div class="ba-divider"></div>
+          <div class="ba-handle">↔</div>
+        </div>
+        <div class="ba-caption">
+          <h4>Interior Refresh</h4>
+          <p>Same seat. Same car. About an hour of actual work.</p>
+        </div>
+      </div>
+
+      <div class="ba-card">
+        <div class="ba-slider" data-ba>
+          <div class="ba-before">Brake Dust & Grime</div>
+          <span class="ba-label-tag ba-label-before">Before</span>
+          <div class="ba-after">Full Detail Complete</div>
+          <span class="ba-label-tag ba-label-after">After</span>
+          <div class="ba-divider"></div>
+          <div class="ba-handle">↔</div>
+        </div>
+        <div class="ba-caption">
+          <h4>Full Detail Transformation</h4>
+          <p>Wheels are where dirt hides longest, and where the difference shows fastest.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ SECTION ============ -->
+<section id="faq">
+  <div class="container">
+    <span class="section-tag">Good to Know</span>
+    <h2 class="section-title">Before You Book — Everything You're Probably Wondering</h2>
+
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question">How long does a full detail take?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Most full packages take 2–3 hours depending on vehicle size and condition. We'd rather take the time to do it right than rush through it.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">Do I need to drop off my car, or can you come to me?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Both work. We offer mobile detailing across Orillia and the surrounding area, or you're welcome to drop off — whichever fits your schedule better.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">What if it rains after I get a wax service?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>A proper wax forms a protective seal, so rain won't undo the work — it'll actually bead and run off cleaner than before. Just give it a few hours to cure before the first wash.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">How far in advance should I book?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>A few days' notice is ideal, especially during seasonal rushes (spring cleanup and pre-winter protection are our busiest windows), but we'll always try to fit you in sooner if we can.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">What payment methods do you accept?<span class="faq-icon">+</span></button>
+        <div class="faq-answer"><p>Cash, e-transfer, and major debit/credit — whatever's easiest for you.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BOOKING SECTION ============ -->
+<section id="booking" style="background:var(--navy-2);">
+  <div class="container">
+    <span class="section-tag">Book Now</span>
+    <h2 class="section-title">Booking Is Simple</h2>
+    <p class="section-sub">Tell us what your vehicle needs and when you're free. We'll confirm your appointment, usually within the hour — no phone tag, no guessing which number to text.</p>
+
+    <div class="booking-wrap">
+      <div class="booking-form">
+        <form id="bookingForm">
+          <div class="form-row">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" required placeholder="Your name">
+          </div>
+          <div class="form-row">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" required placeholder="(705) 000-0000">
+          </div>
+          <div class="form-row">
+            <label for="vehicle">Vehicle Type</label>
+            <select id="vehicle" required>
+              <option value="">Select vehicle type</option>
+              <option>Sedan</option>
+              <option>SUV</option>
+              <option>Truck</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="service">Preferred Service</label>
+            <select id="service" required>
+              <option value="">Select a service</option>
+              <option>Exterior Cleaning — $75</option>
+              <option>Interior Cleaning — $100</option>
+              <option>Full Package — Sedan — $150</option>
+              <option>Full Package — SUV — $175</option>
+              <option>Full Package — Truck — $200</option>
+              <option>Wax & Shine Add-On</option>
+              <option>Clay Bar Add-On</option>
+              <option>Carpet Stain Removal</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label for="date">Preferred Date</label>
+            <input type="date" id="date" required>
+          </div>
+          <button type="submit" class="form-submit">Request Your Detail</button>
+        </form>
+        <div class="confirmation" id="confirmation">
+          <div class="check">✓</div>
+          <h3>Thanks! We'll be in touch within 1 business hour.</h3>
+          <p>Your request has been received. We'll confirm your appointment time and location shortly.</p>
+        </div>
+      </div>
+
+      <div class="booking-side">
+        <h3>Prefer to Call or Text?</h3>
+        <p>You can also reach us directly and we'll respond fast — we keep a close eye on every message that comes in.</p>
+        <div class="direct-contact">
+          <p>Direct lines (call or text):</p>
+          <a href="tel:+19054527898">+1 (905) 452-7898</a>
+          <a href="tel:+17053502841">+1 (705) 350-2841</a>
+          <a href="tel:+17059551879">+1 (705) 955-1879</a>
+          <p style="margin-top:14px;">Email:</p>
+          <a href="mailto:kingsdetailing44@gmail.com">kingsdetailing44@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT SECTION ============ -->
+<section id="about">
+  <div class="container">
+    <span class="section-tag">Who We Are</span>
+    <div class="about-wrap">
+      <div class="about-text">
+        <h2 class="section-title">Owner-Operated. Orillia-Based. No Shortcuts.</h2>
+        <p>4 Kings Detailing isn't a franchise or a drive-through wash — it's a small, local operation built on doing the kind of work we'd want done on our own vehicles.</p>
+        <p>Every booking gets the same hands, the same standards, and the same attention, whether it's a daily driver or a weekend truck. Precision and craftsmanship aren't a tagline here — they're just how the work gets done.</p>
+        <a href="#booking" class="btn-primary">Book Your Detail</a>
+      </div>
+      <div class="about-visual">Candid photo placeholder: owner mid-detail, hands on panel, polishing pad in motion</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>4 Kings Detailing</h4>
+        <p>Precision. Perfection. Royal Treatment.</p>
+        <p>Serving Orillia, Ontario and surrounding areas — mobile & in-shop appointments available.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:+19054527898">+1 (905) 452-7898</a>
+        <a href="tel:+17053502841">+1 (705) 350-2841</a>
+        <a href="tel:+17059551879">+1 (705) 955-1879</a>
+        <a href="mailto:kingsdetailing44@gmail.com">kingsdetailing44@gmail.com</a>
+      </div>
+      <div class="footer-col">
+        <h4>Follow Us</h4>
+        <a href="#" target="_blank">Instagram</a>
+        <a href="#" target="_blank">Facebook</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 4 Kings Detailing. All rights reserved.</span>
+      <span>Orillia, Ontario, Canada</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ===== FAQ ACCORDION =====
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    const btn = item.querySelector('.faq-question');
+    const answer = item.querySelector('.faq-answer');
+    btn.addEventListener('click', ()=>{
+      const isActive = item.classList.contains('active');
+      document.querySelectorAll('.faq-item').forEach(i=>{
+        i.classList.remove('active');
+        i.querySelector('.faq-answer').style.maxHeight = null;
+      });
+      if(!isActive){
+        item.classList.add('active');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // ===== BEFORE/AFTER SLIDER =====
+  document.querySelectorAll('[data-ba]').forEach(slider=>{
+    const after = slider.querySelector('.ba-after');
+    const divider = slider.querySelector('.ba-divider');
+    const handle = slider.querySelector('.ba-handle');
+    let dragging = false;
+
+    function setPosition(x){
+      const rect = slider.getBoundingClientRect();
+      let pct = ((x - rect.left) / rect.width) * 100;
+      pct = Math.max(0, Math.min(100, pct));
+      after.style.clipPath = `inset(0 ${100-pct}% 0 0)`;
+      divider.style.left = pct + '%';
+      handle.style.left = pct + '%';
+    }
+
+    slider.addEventListener('mousedown', e=>{ dragging = true; setPosition(e.clientX); });
+    window.addEventListener('mousemove', e=>{ if(dragging) setPosition(e.clientX); });
+    window.addEventListener('mouseup', ()=> dragging = false);
+
+    slider.addEventListener('touchstart', e=>{ dragging = true; setPosition(e.touches[0].clientX); });
+    slider.addEventListener('touchmove', e=>{ if(dragging) setPosition(e.touches[0].clientX); });
+    slider.addEventListener('touchend', ()=> dragging = false);
+  });
+
+  // ===== BOOKING FORM SUBMIT =====
+  document.getElementById('bookingForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    this.style.display = 'none';
+    document.getElementById('confirmation').classList.add('show');
+  });
+
+  // ===== MOBILE NAV TOGGLE STYLE =====
+  const style = document.createElement('style');
+  style.innerHTML = `.nav-links.mobile-open{
+    display:flex !important; position:absolute; top:100%; left:0; right:0;
+    background:rgba(11,18,32,0.97); flex-direction:column; padding:20px 24px; gap:18px;
+  }`;
+  document.head.appendChild(style);
+</script>
+
+</body>
+</html>
